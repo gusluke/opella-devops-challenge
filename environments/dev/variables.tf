@@ -13,7 +13,7 @@ variable "environment" {
 variable "location" {
   description = "Azure region where resources will be deployed"
   type        = string
-  default     = "eastus"
+  default     = "westus2"
 }
 
 variable "vnet_address_space" {

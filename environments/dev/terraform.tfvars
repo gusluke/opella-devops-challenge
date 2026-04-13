@@ -1,6 +1,6 @@
 project     = "opella"
 environment = "dev"
-location    = "eastus"
+location    = "westus2"
 
 vnet_address_space = ["10.1.0.0/16"]
 
@@ -15,7 +15,7 @@ subnets = {
   }
 }
 
-vm_size           = "Standard_D2a_v4"
+vm_size           = "Standard_B1s"
 vm_admin_username = "azureuser"
 
 tags = {
