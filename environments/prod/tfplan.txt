@@ -1,16 +1,358 @@
 Acquiring state lock. This may take a few moments...
-random_string.suffix: Refreshing state... [id=frdc46]
-azurerm_resource_group.this: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope]
-azurerm_resource_group_policy_assignment.require_tags: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Authorization/policyAssignments/require-tags-prod]
-module.vnet.azurerm_virtual_network.this: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Network/virtualNetworks/vnet-opella-prod-westeurope]
-azurerm_storage_account.this: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Storage/storageAccounts/stopellaprodfrdc46]
-module.vnet.azurerm_subnet.this["storage-subnet"]: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Network/virtualNetworks/vnet-opella-prod-westeurope/subnets/storage-subnet]
-module.vnet.azurerm_subnet.this["vm-subnet"]: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Network/virtualNetworks/vnet-opella-prod-westeurope/subnets/vm-subnet]
-azurerm_network_interface.this: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Network/networkInterfaces/nic-opella-prod]
-azurerm_linux_virtual_machine.this: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Compute/virtualMachines/vm-opella-prod]
 
-No changes. Your infrastructure matches the configuration.
+Terraform used the selected providers to generate the following execution
+plan. Resource actions are indicated with the following symbols:
+  + create
 
-Terraform has compared your real infrastructure against your configuration
-and found no differences, so no changes are needed.
+Terraform will perform the following actions:
+
+  # azurerm_linux_virtual_machine.this will be created
+  + resource "azurerm_linux_virtual_machine" "this" {
+      + admin_username                                         = "azureuser"
+      + allow_extension_operations                             = true
+      + bypass_platform_safety_checks_on_user_schedule_enabled = false
+      + computer_name                                          = (known after apply)
+      + disable_password_authentication                        = true
+      + disk_controller_type                                   = (known after apply)
+      + extensions_time_budget                                 = "PT1H30M"
+      + id                                                     = (known after apply)
+      + location                                               = "westeurope"
+      + max_bid_price                                          = -1
+      + name                                                   = "vm-opella-prod"
+      + network_interface_ids                                  = (known after apply)
+      + patch_assessment_mode                                  = "ImageDefault"
+      + patch_mode                                             = "ImageDefault"
+      + platform_fault_domain                                  = -1
+      + priority                                               = "Regular"
+      + private_ip_address                                     = (known after apply)
+      + private_ip_addresses                                   = (known after apply)
+      + provision_vm_agent                                     = true
+      + public_ip_address                                      = (known after apply)
+      + public_ip_addresses                                    = (known after apply)
+      + resource_group_name                                    = "rg-opella-prod-westeurope"
+      + size                                                   = "Standard_B2ts_v2"
+      + tags                                                   = {
+          + "costcenter"  = "opella-challenge"
+          + "department"  = "devops"
+          + "environment" = "prod"
+          + "managed_by"  = "terraform"
+          + "owner"       = "gustavo"
+          + "project"     = "opella"
+          + "region"      = "westeurope"
+        }
+      + virtual_machine_id                                     = (known after apply)
+      + vm_agent_platform_updates_enabled                      = false
+
+      + admin_ssh_key {
+          + public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCveusCNogyOSCw79IvULqo+OJHUbknRg6JXXCDavPTegBVt+s0Sd8eZ7xh0/2t7QHqkIyD37ROZW0Yd2JQmk82NWqNOk1lR1FGTUWj04oHpVask4vcO7AkqtVyYeLvVX+uZ902MZwjHxcIAXNYTzz8QgFvmRklLbrXKYltupFGZdmwAW4ki0FilIXY9olBEq0Ffdj1yEhE+/mnSygOtBggL1yEptGU/P6QGBhwqhG1jWceumR3iNKkHeUxpizvPIR8jfRXY57v4DjQ24z17RqCorqgkj+qV5gfP28k32vxFOq6jd3umwUkQVojUSAJ2XR0hqghMWWD7iNax+teG7XJ+D4KUBd75SDT2mjJhfzOmtpV1KYU370qtKqHjn5r0zapWSQxniLSjxmWfZE+Pbg9Kit8zrtqS2iMs/AZtzouiTvkiWTcMwbFahsMKTQq5WfAorxGzm5ukHCLJdadJxF4LJsbHbzlpGFHW24hhWwZxs14Zx2lnQAyS9wyF07mi4nMLvjYU1nLl1zzOzRIXU+vCMVhHzzIpVZH2v0t/i2EDaBpxCv0Byc42s4mspBwzuKHADnUZJCqEIxbBQHW+5bjaREVGl3MeTu48lVs/yOeLrFV/iMzISwsVv4tVKbBdmkkSX6NjcfoEB6O6JqRWBPGsP7z8ytbc9bA4giM7Ai/7Q== gusluke@debian-g3-mini"
+          + username   = "azureuser"
+        }
+
+      + os_disk {
+          + caching                   = "ReadWrite"
+          + disk_size_gb              = (known after apply)
+          + name                      = (known after apply)
+          + storage_account_type      = "Premium_LRS"
+          + write_accelerator_enabled = false
+        }
+
+      + source_image_reference {
+          + offer     = "0001-com-ubuntu-server-jammy"
+          + publisher = "Canonical"
+          + sku       = "22_04-lts"
+          + version   = "latest"
+        }
+
+      + termination_notification (known after apply)
+    }
+
+  # azurerm_network_interface.this will be created
+  + resource "azurerm_network_interface" "this" {
+      + accelerated_networking_enabled = (known after apply)
+      + applied_dns_servers            = (known after apply)
+      + dns_servers                    = (known after apply)
+      + enable_accelerated_networking  = (known after apply)
+      + enable_ip_forwarding           = (known after apply)
+      + id                             = (known after apply)
+      + internal_domain_name_suffix    = (known after apply)
+      + ip_forwarding_enabled          = (known after apply)
+      + location                       = "westeurope"
+      + mac_address                    = (known after apply)
+      + name                           = "nic-opella-prod"
+      + private_ip_address             = (known after apply)
+      + private_ip_addresses           = (known after apply)
+      + resource_group_name            = "rg-opella-prod-westeurope"
+      + tags                           = {
+          + "costcenter"  = "opella-challenge"
+          + "department"  = "devops"
+          + "environment" = "prod"
+          + "managed_by"  = "terraform"
+          + "owner"       = "gustavo"
+          + "project"     = "opella"
+          + "region"      = "westeurope"
+        }
+      + virtual_machine_id             = (known after apply)
+
+      + ip_configuration {
+          + gateway_load_balancer_frontend_ip_configuration_id = (known after apply)
+          + name                                               = "internal"
+          + primary                                            = (known after apply)
+          + private_ip_address                                 = (known after apply)
+          + private_ip_address_allocation                      = "Dynamic"
+          + private_ip_address_version                         = "IPv4"
+          + subnet_id                                          = (known after apply)
+        }
+    }
+
+  # azurerm_resource_group.this will be created
+  + resource "azurerm_resource_group" "this" {
+      + id       = (known after apply)
+      + location = "westeurope"
+      + name     = "rg-opella-prod-westeurope"
+      + tags     = {
+          + "costcenter"  = "opella-challenge"
+          + "department"  = "devops"
+          + "environment" = "prod"
+          + "managed_by"  = "terraform"
+          + "owner"       = "gustavo"
+          + "project"     = "opella"
+          + "region"      = "westeurope"
+        }
+    }
+
+  # azurerm_resource_group_policy_assignment.require_tags will be created
+  + resource "azurerm_resource_group_policy_assignment" "require_tags" {
+      + description          = "Enforces that all resources have the required tags: environment, project, managed_by"
+      + display_name         = "Require mandatory tags on resources"
+      + enforce              = true
+      + id                   = (known after apply)
+      + metadata             = (known after apply)
+      + name                 = "require-tags-prod"
+      + parameters           = jsonencode(
+            {
+              + tagName = {
+                  + value = "environment"
+                }
+            }
+        )
+      + policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025"
+      + resource_group_id    = (known after apply)
+    }
+
+  # azurerm_storage_account.this will be created
+  + resource "azurerm_storage_account" "this" {
+      + access_tier                        = (known after apply)
+      + account_kind                       = "StorageV2"
+      + account_replication_type           = "GRS"
+      + account_tier                       = "Standard"
+      + allow_nested_items_to_be_public    = true
+      + cross_tenant_replication_enabled   = true
+      + default_to_oauth_authentication    = false
+      + dns_endpoint_type                  = "Standard"
+      + enable_https_traffic_only          = (known after apply)
+      + https_traffic_only_enabled         = (known after apply)
+      + id                                 = (known after apply)
+      + infrastructure_encryption_enabled  = false
+      + is_hns_enabled                     = false
+      + large_file_share_enabled           = (known after apply)
+      + local_user_enabled                 = true
+      + location                           = "westeurope"
+      + min_tls_version                    = "TLS1_2"
+      + name                               = (known after apply)
+      + nfsv3_enabled                      = false
+      + primary_access_key                 = (sensitive value)
+      + primary_blob_connection_string     = (sensitive value)
+      + primary_blob_endpoint              = (known after apply)
+      + primary_blob_host                  = (known after apply)
+      + primary_blob_internet_endpoint     = (known after apply)
+      + primary_blob_internet_host         = (known after apply)
+      + primary_blob_microsoft_endpoint    = (known after apply)
+      + primary_blob_microsoft_host        = (known after apply)
+      + primary_connection_string          = (sensitive value)
+      + primary_dfs_endpoint               = (known after apply)
+      + primary_dfs_host                   = (known after apply)
+      + primary_dfs_internet_endpoint      = (known after apply)
+      + primary_dfs_internet_host          = (known after apply)
+      + primary_dfs_microsoft_endpoint     = (known after apply)
+      + primary_dfs_microsoft_host         = (known after apply)
+      + primary_file_endpoint              = (known after apply)
+      + primary_file_host                  = (known after apply)
+      + primary_file_internet_endpoint     = (known after apply)
+      + primary_file_internet_host         = (known after apply)
+      + primary_file_microsoft_endpoint    = (known after apply)
+      + primary_file_microsoft_host        = (known after apply)
+      + primary_location                   = (known after apply)
+      + primary_queue_endpoint             = (known after apply)
+      + primary_queue_host                 = (known after apply)
+      + primary_queue_microsoft_endpoint   = (known after apply)
+      + primary_queue_microsoft_host       = (known after apply)
+      + primary_table_endpoint             = (known after apply)
+      + primary_table_host                 = (known after apply)
+      + primary_table_microsoft_endpoint   = (known after apply)
+      + primary_table_microsoft_host       = (known after apply)
+      + primary_web_endpoint               = (known after apply)
+      + primary_web_host                   = (known after apply)
+      + primary_web_internet_endpoint      = (known after apply)
+      + primary_web_internet_host          = (known after apply)
+      + primary_web_microsoft_endpoint     = (known after apply)
+      + primary_web_microsoft_host         = (known after apply)
+      + public_network_access_enabled      = true
+      + queue_encryption_key_type          = "Service"
+      + resource_group_name                = "rg-opella-prod-westeurope"
+      + secondary_access_key               = (sensitive value)
+      + secondary_blob_connection_string   = (sensitive value)
+      + secondary_blob_endpoint            = (known after apply)
+      + secondary_blob_host                = (known after apply)
+      + secondary_blob_internet_endpoint   = (known after apply)
+      + secondary_blob_internet_host       = (known after apply)
+      + secondary_blob_microsoft_endpoint  = (known after apply)
+      + secondary_blob_microsoft_host      = (known after apply)
+      + secondary_connection_string        = (sensitive value)
+      + secondary_dfs_endpoint             = (known after apply)
+      + secondary_dfs_host                 = (known after apply)
+      + secondary_dfs_internet_endpoint    = (known after apply)
+      + secondary_dfs_internet_host        = (known after apply)
+      + secondary_dfs_microsoft_endpoint   = (known after apply)
+      + secondary_dfs_microsoft_host       = (known after apply)
+      + secondary_file_endpoint            = (known after apply)
+      + secondary_file_host                = (known after apply)
+      + secondary_file_internet_endpoint   = (known after apply)
+      + secondary_file_internet_host       = (known after apply)
+      + secondary_file_microsoft_endpoint  = (known after apply)
+      + secondary_file_microsoft_host      = (known after apply)
+      + secondary_location                 = (known after apply)
+      + secondary_queue_endpoint           = (known after apply)
+      + secondary_queue_host               = (known after apply)
+      + secondary_queue_microsoft_endpoint = (known after apply)
+      + secondary_queue_microsoft_host     = (known after apply)
+      + secondary_table_endpoint           = (known after apply)
+      + secondary_table_host               = (known after apply)
+      + secondary_table_microsoft_endpoint = (known after apply)
+      + secondary_table_microsoft_host     = (known after apply)
+      + secondary_web_endpoint             = (known after apply)
+      + secondary_web_host                 = (known after apply)
+      + secondary_web_internet_endpoint    = (known after apply)
+      + secondary_web_internet_host        = (known after apply)
+      + secondary_web_microsoft_endpoint   = (known after apply)
+      + secondary_web_microsoft_host       = (known after apply)
+      + sftp_enabled                       = false
+      + shared_access_key_enabled          = true
+      + table_encryption_key_type          = "Service"
+      + tags                               = {
+          + "costcenter"  = "opella-challenge"
+          + "department"  = "devops"
+          + "environment" = "prod"
+          + "managed_by"  = "terraform"
+          + "owner"       = "gustavo"
+          + "project"     = "opella"
+          + "region"      = "westeurope"
+        }
+
+      + blob_properties (known after apply)
+
+      + network_rules (known after apply)
+
+      + queue_properties (known after apply)
+
+      + routing (known after apply)
+
+      + share_properties (known after apply)
+
+      + static_website (known after apply)
+    }
+
+  # random_string.suffix will be created
+  + resource "random_string" "suffix" {
+      + id          = (known after apply)
+      + length      = 6
+      + lower       = true
+      + min_lower   = 0
+      + min_numeric = 0
+      + min_special = 0
+      + min_upper   = 0
+      + number      = true
+      + numeric     = true
+      + result      = (known after apply)
+      + special     = false
+      + upper       = false
+    }
+
+  # module.vnet.azurerm_subnet.this["storage-subnet"] will be created
+  + resource "azurerm_subnet" "this" {
+      + address_prefixes                               = [
+          + "10.2.2.0/24",
+        ]
+      + default_outbound_access_enabled                = true
+      + enforce_private_link_endpoint_network_policies = (known after apply)
+      + enforce_private_link_service_network_policies  = (known after apply)
+      + id                                             = (known after apply)
+      + name                                           = "storage-subnet"
+      + private_endpoint_network_policies              = (known after apply)
+      + private_endpoint_network_policies_enabled      = (known after apply)
+      + private_link_service_network_policies_enabled  = (known after apply)
+      + resource_group_name                            = "rg-opella-prod-westeurope"
+      + service_endpoints                              = [
+          + "Microsoft.Storage",
+        ]
+      + virtual_network_name                           = "vnet-opella-prod-westeurope"
+    }
+
+  # module.vnet.azurerm_subnet.this["vm-subnet"] will be created
+  + resource "azurerm_subnet" "this" {
+      + address_prefixes                               = [
+          + "10.2.1.0/24",
+        ]
+      + default_outbound_access_enabled                = true
+      + enforce_private_link_endpoint_network_policies = (known after apply)
+      + enforce_private_link_service_network_policies  = (known after apply)
+      + id                                             = (known after apply)
+      + name                                           = "vm-subnet"
+      + private_endpoint_network_policies              = (known after apply)
+      + private_endpoint_network_policies_enabled      = (known after apply)
+      + private_link_service_network_policies_enabled  = (known after apply)
+      + resource_group_name                            = "rg-opella-prod-westeurope"
+      + virtual_network_name                           = "vnet-opella-prod-westeurope"
+    }
+
+  # module.vnet.azurerm_virtual_network.this will be created
+  + resource "azurerm_virtual_network" "this" {
+      + address_space       = [
+          + "10.2.0.0/16",
+        ]
+      + dns_servers         = (known after apply)
+      + guid                = (known after apply)
+      + id                  = (known after apply)
+      + location            = "westeurope"
+      + name                = "vnet-opella-prod-westeurope"
+      + resource_group_name = "rg-opella-prod-westeurope"
+      + subnet              = (known after apply)
+      + tags                = {
+          + "costcenter"  = "opella-challenge"
+          + "department"  = "devops"
+          + "environment" = "prod"
+          + "managed_by"  = "terraform"
+          + "owner"       = "gustavo"
+          + "project"     = "opella"
+          + "region"      = "westeurope"
+        }
+    }
+
+Plan: 9 to add, 0 to change, 0 to destroy.
+
+Changes to Outputs:
+  + resource_group_name  = "rg-opella-prod-westeurope"
+  + storage_account_name = (known after apply)
+  + subnet_ids           = {
+      + storage-subnet = (known after apply)
+      + vm-subnet      = (known after apply)
+    }
+  + vm_name              = "vm-opella-prod"
+  + vm_private_ip        = (known after apply)
+  + vnet_id              = (known after apply)
+  + vnet_name            = "vnet-opella-prod-westeurope"
+
+─────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't
+guarantee to take exactly these actions if you run "terraform apply" now.
 Releasing state lock. This may take a few moments...
