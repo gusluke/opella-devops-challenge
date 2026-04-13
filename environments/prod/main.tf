@@ -104,3 +104,18 @@ locals {
     managed_by  = "terraform"
   })
 }
+
+resource "azurerm_resource_group_policy_assignment" "require_tags" {
+  name                 = "require-tags-${var.environment}"
+  resource_group_id    = azurerm_resource_group.this.id
+  policy_definition_id = "/providers/Microsoft.Authorization/policyDefinitions/96670d01-0a4d-4649-9c89-2d3abc0a5025"
+
+  display_name = "Require mandatory tags on resources"
+  description  = "Enforces that all resources have the required tags: environment, project, managed_by"
+
+  parameters = jsonencode({
+    tagName = {
+      value = "environment"
+    }
+  })
+}
