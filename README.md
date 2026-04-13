@@ -28,8 +28,8 @@ separation, compliance boundaries, or multiple teams.
 
 | Resource        | Dev                  | Prod                  |
 |----------------|----------------------|-----------------------|
-| Location        | eastus               | westeurope            |
-| VM Size         | Standard_B1s         | Standard_B2s          |
+| Location        | westus2              | westeurope            |
+| VM Size         | Standard_B2ts_v2     | Standard_B2ts_v2      |
 | OS Disk         | Standard_LRS         | Premium_LRS           |
 | Storage         | LRS (local)          | GRS (geo-redundant)   |
 | VNET Range      | 10.1.0.0/16          | 10.2.0.0/16           |
