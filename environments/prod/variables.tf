@@ -43,7 +43,7 @@ variable "subnets" {
 variable "vm_size" {
   description = "Size of the Virtual Machine"
   type        = string
-  default     = "Standard_B1s"
+  default     = "Standard_B2ts_v2"
 }
 
 variable "vm_admin_username" {

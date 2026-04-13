@@ -15,7 +15,7 @@ subnets = {
   }
 }
 
-vm_size           = "Standard_B1s"
+vm_size           = "Standard_B2ts_v2"
 vm_admin_username = "azureuser"
 
 tags = {
