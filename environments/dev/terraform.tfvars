@@ -15,9 +15,8 @@ subnets = {
   }
 }
 
-vm_size                = "Standard_B1s"
-vm_admin_username      = "azureuser"
-vm_ssh_public_key_path = "~/.ssh/id_rsa.pub"
+vm_size           = "Standard_B1s"
+vm_admin_username = "azureuser"
 
 tags = {
   owner      = "gustavo"

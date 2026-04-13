@@ -1,3 +1,4 @@
+# Dev environment - Opella DevOps Challenge
 terraform {
   required_version = ">= 1.3.0"
 
@@ -67,7 +68,7 @@ resource "azurerm_linux_virtual_machine" "this" {
 
   admin_ssh_key {
     username   = var.vm_admin_username
-    public_key = file(var.vm_ssh_public_key_path)
+    public_key = var.vm_ssh_public_key
   }
 
   os_disk {

@@ -52,10 +52,9 @@ variable "vm_admin_username" {
   default     = "azureuser"
 }
 
-variable "vm_ssh_public_key_path" {
+variable "vm_ssh_public_key" {
   description = "Path to the SSH public key file for VM authentication"
   type        = string
-  default     = "~/.ssh/id_rsa.pub"
 }
 
 variable "tags" {
