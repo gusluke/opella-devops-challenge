@@ -11,6 +11,10 @@ on:
 env:
   TF_VERSION: '1.14.8'
 
+concurrency:
+  group: terraform-plan-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   terraform-test:
     name: Test - VNET Module

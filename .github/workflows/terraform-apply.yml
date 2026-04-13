@@ -11,6 +11,10 @@ on:
 env:
   TF_VERSION: '1.14.8'
 
+concurrency:
+  group: terraform-apply
+  cancel-in-progress: false
+
 jobs:
   terraform-apply-dev:
     name: Apply - Dev
