@@ -12,8 +12,36 @@ env:
   TF_VERSION: '1.14.8'
 
 jobs:
+  terraform-test:
+    name: Test - VNET Module
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: modules/vnet
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Test
+        run: terraform test
+        env:
+          ARM_CLIENT_ID:       ${{ secrets.ARM_CLIENT_ID_DEV }}
+          ARM_CLIENT_SECRET:   ${{ secrets.ARM_CLIENT_SECRET_DEV }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_DEV }}
+          ARM_TENANT_ID:       ${{ secrets.ARM_TENANT_ID_DEV }}
+
   terraform-plan-dev:
     name: Plan - Dev
+    needs: terraform-test
     runs-on: ubuntu-latest
     environment: dev
     defaults:
@@ -65,6 +93,7 @@ jobs:
 
   terraform-plan-prod:
     name: Plan - Prod
+    needs: terraform-test
     runs-on: ubuntu-latest
     environment: prod
     defaults:
