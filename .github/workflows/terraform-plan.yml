@@ -49,7 +49,7 @@ jobs:
           ARM_TENANT_ID:       ${{ secrets.ARM_TENANT_ID_DEV }}
 
       - name: Terraform Plan
-        run: terraform plan -no-color -out=tfplan
+        run: terraform plan -no-color -out=tfplan -var-file=../../environments/common.tfvars
         env:
           ARM_CLIENT_ID:       ${{ secrets.ARM_CLIENT_ID_DEV }}
           ARM_CLIENT_SECRET:   ${{ secrets.ARM_CLIENT_SECRET_DEV }}
@@ -100,7 +100,7 @@ jobs:
           ARM_TENANT_ID:       ${{ secrets.ARM_TENANT_ID_PROD }}
 
       - name: Terraform Plan
-        run: terraform plan -no-color -out=tfplan
+        run: terraform plan -no-color -out=tfplan -var-file=../../environments/common.tfvars
         env:
           ARM_CLIENT_ID:       ${{ secrets.ARM_CLIENT_ID_PROD }}
           ARM_CLIENT_SECRET:   ${{ secrets.ARM_CLIENT_SECRET_PROD }}

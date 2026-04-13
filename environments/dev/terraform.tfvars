@@ -1,4 +1,3 @@
-project     = "opella"
 environment = "dev"
 location    = "westus2"
 

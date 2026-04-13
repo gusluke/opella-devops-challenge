@@ -1,4 +1,3 @@
-project     = "opella"
 environment = "prod"
 location    = "westeurope"
 
