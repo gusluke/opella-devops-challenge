@@ -44,6 +44,7 @@ jobs:
           ARM_CLIENT_SECRET:   ${{ secrets.ARM_CLIENT_SECRET_DEV }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_DEV }}
           ARM_TENANT_ID:       ${{ secrets.ARM_TENANT_ID_DEV }}
+          TF_VAR_vm_ssh_public_key: ${{ secrets.VM_SSH_PUBLIC_KEY_DEV }}
 
   terraform-apply-prod:
     name: Apply - Prod
@@ -78,3 +79,4 @@ jobs:
           ARM_CLIENT_SECRET:   ${{ secrets.ARM_CLIENT_SECRET_PROD }}
           ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_PROD }}
           ARM_TENANT_ID:       ${{ secrets.ARM_TENANT_ID_PROD }}
+          TF_VAR_vm_ssh_public_key: ${{ secrets.VM_SSH_PUBLIC_KEY_PROD }}
