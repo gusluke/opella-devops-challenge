@@ -9,7 +9,7 @@ It provisions Azure infrastructure using Terraform, emphasizing reusable, secure
     ├── modules/
     │   └── vnet/          # Reusable Azure VNET module
     ├── environments/
-    │   ├── dev/           # Development environment (eastus)
+    │   ├── dev/           # Development environment (westus2)
     │   └── prod/          # Production environment (westeurope)
     └── .github/
         └── workflows/
@@ -36,7 +36,7 @@ separation, compliance boundaries, or multiple teams.
 
 ### Naming Convention
 All resources follow the pattern: `{type}-{project}-{environment}-{region}`
-Example: `vnet-opella-dev-eastus`, `rg-opella-prod-westeurope`
+Example: `vnet-opella-dev-westus2`, `rg-opella-prod-westeurope`
 
 ### Tagging Strategy
 All resources are tagged with:
