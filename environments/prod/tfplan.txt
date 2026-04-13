@@ -1,10 +1,11 @@
 Acquiring state lock. This may take a few moments...
 random_string.suffix: Refreshing state... [id=frdc46]
 azurerm_resource_group.this: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope]
+azurerm_resource_group_policy_assignment.require_tags: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Authorization/policyAssignments/require-tags-prod]
 module.vnet.azurerm_virtual_network.this: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Network/virtualNetworks/vnet-opella-prod-westeurope]
 azurerm_storage_account.this: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Storage/storageAccounts/stopellaprodfrdc46]
-module.vnet.azurerm_subnet.this["vm-subnet"]: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Network/virtualNetworks/vnet-opella-prod-westeurope/subnets/vm-subnet]
 module.vnet.azurerm_subnet.this["storage-subnet"]: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Network/virtualNetworks/vnet-opella-prod-westeurope/subnets/storage-subnet]
+module.vnet.azurerm_subnet.this["vm-subnet"]: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Network/virtualNetworks/vnet-opella-prod-westeurope/subnets/vm-subnet]
 azurerm_network_interface.this: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Network/networkInterfaces/nic-opella-prod]
 azurerm_linux_virtual_machine.this: Refreshing state... [id=/subscriptions/869068fd-c476-44cb-afa5-782ca7b11fbc/resourceGroups/rg-opella-prod-westeurope/providers/Microsoft.Compute/virtualMachines/vm-opella-prod]
 
