@@ -46,6 +46,68 @@ All resources are tagged with:
 - `managed_by` — terraform
 - `owner`, `department`, `costcenter` — via tfvars
 
+## Design Decisions
+
+### Module: What configurations might change?
+The VNET module exposes the following as variables to allow reuse across setups:
+- `name`, `location`, `resource_group_name` — differ per environment and region
+- `address_space` — must not overlap between environments (dev: 10.1.0.0/16, prod: 10.2.0.0/16)
+- `subnets` — each environment may need different subnet layouts
+- `tags` — environment-specific metadata
+- `enable_ddos_protection` — optional, disabled by default due to cost (~$2,944/month)
+
+### Module: Security features
+- **DDoS Protection Plan** — optional via `enable_ddos_protection` variable
+- **Service Endpoints** — subnets support `service_endpoints` to allow private access to Azure services (e.g. `Microsoft.Storage`) without exposing traffic to the internet
+- **No public IPs** — VMs use private IPs only, connected via NIC to the VNET
+
+### Module: Outputs and why
+| Output | Why |
+|--------|-----|
+| `vnet_id` | Required by other modules or resources that need to attach to the VNET |
+| `vnet_name` | Required to create subnets or peerings outside the module |
+| `vnet_address_space` | Useful for documentation and to avoid CIDR overlaps |
+| `subnet_ids` | Required by NICs, Load Balancers, or any resource that attaches to a subnet |
+| `subnet_address_prefixes` | Useful for firewall rules and NSG configurations |
+
+### Module: Documentation
+Documentation is auto-generated from code using [terraform-docs](https://terraform-docs.io):
+```bash
+terraform-docs markdown table --output-file README.md --output-mode inject modules/vnet/
+```
+This ensures documentation is always in sync with the actual variables and outputs.
+
+### Module: Testing
+The module includes native Terraform tests (`terraform test`) in `modules/vnet/tests/`.
+Tests use `command = plan` so no real Azure resources are created — safe to run in CI with no cost.
+Tests cover: correct VNET name, location, address space, subnet CIDRs, and DDoS protection toggle.
+Tests run automatically on every Pull Request before the plan step.
+
+### Infrastructure: Resource Groups vs Subscriptions
+**Resource Groups** are used to isolate dev and prod environments. This is the right choice for this project because:
+- Single team, single billing scope — no need for subscription-level isolation
+- Simpler to manage — one subscription, multiple resource groups
+- Azure Policy can be applied at Resource Group level
+
+**Subscriptions** would be the right choice if:
+- Multiple teams with separate billing requirements
+- Strict compliance boundaries (e.g. PCI-DSS requiring environment isolation)
+- Different quota limits needed per environment
+
+### Infrastructure: Avoiding repeated values
+- `environments/common.tfvars` holds values shared across all environments (e.g. `project`)
+- Environment-specific values live in each environment's own `terraform.tfvars`
+- The `locals` block merges common tags with environment-specific ones — single source of truth
+
+### Infrastructure: Outputs and why
+| Output | Why |
+|--------|-----|
+| `resource_group_name` | Useful for other tools or pipelines that need to reference the RG |
+| `vnet_id` / `vnet_name` | For peering, DNS, or external references |
+| `subnet_ids` | For attaching additional resources post-deployment |
+| `storage_account_name` | Random suffix makes it unpredictable — output makes it discoverable |
+| `vm_name` / `vm_private_ip` | For connecting to the VM or configuring monitoring |
+
 ## Release Lifecycle
 
     feature branch
