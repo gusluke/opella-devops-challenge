@@ -5,16 +5,16 @@ It provisions Azure infrastructure using Terraform, emphasizing reusable, secure
 
 ## Repository Structure
 
-.
-├── modules/
-│   └── vnet/          # Reusable Azure VNET module
-├── environments/
-│   ├── dev/           # Development environment (eastus)
-│   └── prod/          # Production environment (westeurope)
-└── .github/
-└── workflows/
-├── terraform-plan.yml   # Triggered on Pull Request
-└── terraform-apply.yml  # Triggered on merge to main
+    .
+    ├── modules/
+    │   └── vnet/          # Reusable Azure VNET module
+    ├── environments/
+    │   ├── dev/           # Development environment (eastus)
+    │   └── prod/          # Production environment (westeurope)
+    └── .github/
+        └── workflows/
+            ├── terraform-plan.yml   # Triggered on Pull Request
+            └── terraform-apply.yml  # Triggered on merge to main
 
 ## Architecture Decisions
 
@@ -47,19 +47,20 @@ All resources are tagged with:
 - `owner`, `department`, `costcenter` — via tfvars
 
 ## Release Lifecycle
-feature branch
-│
-▼
-Pull Request → terraform plan runs automatically (dev + prod)
-│
-▼
-Code Review + Plan Review
-│
-▼
-Merge to main → terraform apply dev
-│
-▼ (needs: dev apply success)
-terraform apply prod
+
+    feature branch
+          │
+          ▼
+    Pull Request → terraform plan runs automatically (dev + prod)
+          │
+          ▼
+    Code Review + Plan Review
+          │
+          ▼
+    Merge to main → terraform apply dev
+          │
+          ▼ (needs: dev apply success)
+    terraform apply prod
 
 ## Code Quality Tools
 
