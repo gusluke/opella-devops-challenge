@@ -1,0 +1,71 @@
+name: Terraform Apply
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'environments/**'
+      - 'modules/**'
+
+env:
+  TF_VERSION: '1.14.8'
+
+jobs:
+  terraform-apply-dev:
+    name: Apply - Dev
+    runs-on: ubuntu-latest
+    environment: dev
+    defaults:
+      run:
+        working-directory: environments/dev
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        env:
+          ARM_CLIENT_ID:       ${{ secrets.ARM_CLIENT_ID_DEV }}
+          ARM_CLIENT_SECRET:   ${{ secrets.ARM_CLIENT_SECRET_DEV }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_DEV }}
+          ARM_TENANT_ID:       ${{ secrets.ARM_TENANT_ID_DEV }}
+
+  terraform-apply-prod:
+    name: Apply - Prod
+    runs-on: ubuntu-latest
+    environment: prod
+    needs: terraform-apply-dev
+
+    defaults:
+      run:
+        working-directory: environments/prod
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: ${{ env.TF_VERSION }}
+
+      - name: Terraform Init
+        run: terraform init
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve
+        env:
+          ARM_CLIENT_ID:       ${{ secrets.ARM_CLIENT_ID_PROD }}
+          ARM_CLIENT_SECRET:   ${{ secrets.ARM_CLIENT_SECRET_PROD }}
+          ARM_SUBSCRIPTION_ID: ${{ secrets.ARM_SUBSCRIPTION_ID_PROD }}
+          ARM_TENANT_ID:       ${{ secrets.ARM_TENANT_ID_PROD }}
